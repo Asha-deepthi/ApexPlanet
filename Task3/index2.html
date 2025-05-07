@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Web App</title>
+  <link rel="stylesheet" href="style3.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌐 Interactive Responsive Web App</h1>
+    </header>
+
+    <!-- 🧠 Quiz Section -->
+    <section id="quiz-section">
+      <h2>📝 Quiz</h2>
+      <p id="question"></p>
+      <ul id="answers"></ul>
+      <button id="next-btn" onclick="nextQuestion()">Next</button>
+      <p id="score"></p>
+    </section>
+
+    <!-- 🖼️ Image Carousel -->
+    <section id="carousel-section">
+      <h2>🎠 Image Carousel</h2>
+      <div class="carousel">
+        <img id="carousel-image" src="https://via.placeholder.com/600x300?text=Image+1" alt="Carousel Image" />
+        <div class="carousel-controls">
+          <button onclick="prevImage()">⏮ Prev</button>
+          <button onclick="nextImage()">Next ⏭</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🌦️ Weather Section (no API key) -->
+    <section id="weather-section">
+      <h2>☁️ Get Weather</h2>
+      <input type="text" id="city" placeholder="Enter city" />
+      <button onclick="getWeather()">Get Weather</button>
+      <p id="weather-result"></p>
+    </section>
+  </div>
+
+  <script src="script3.js"></script>
+</body>
+</html>
