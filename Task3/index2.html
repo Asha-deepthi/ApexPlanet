@@ -20,18 +20,16 @@
       <button id="next-btn" onclick="nextQuestion()">Next</button>
       <p id="score"></p>
     </section>
-
-    <!-- 🖼️ Image Carousel -->
+    <!-- carousel Section -->
     <section id="carousel-section">
       <h2>🎠 Image Carousel</h2>
       <div class="carousel">
-        <img id="carousel-image" src="https://via.placeholder.com/600x300?text=Image+1" alt="Carousel Image" />
-        <div class="carousel-controls">
-          <button onclick="prevImage()">⏮ Prev</button>
-          <button onclick="nextImage()">Next ⏭</button>
-        </div>
+        <span class="carousel-control prev" onclick="prevImage()">&#10094;</span>
+        <img id="carousel-image" src="" alt="Carousel Image" />
+        <span class="carousel-control next" onclick="nextImage()">&#10095;</span>
       </div>
     </section>
+    
 
     <!-- 🌦️ Weather Section (no API key) -->
     <section id="weather-section">

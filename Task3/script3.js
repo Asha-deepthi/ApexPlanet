@@ -53,14 +53,20 @@ const quizQuestions = [
   
   // ✅ Image Carousel
   const images = [
-    "https://i.natgeofe.com/k/ad9b542e-c4a0-4d0b-9147-da17121b4c98/MOmeow1_square.png",
-    "https://i0.wp.com/catcaresolutions.com/wp-content/uploads/2020/12/cute-cat-with-yellow-headband-on.png?fit=1000%2C1500&ssl=1",
-    "https://i.pinimg.com/736x/22/fa/d8/22fad88d039d0aa8904d5abcc6f7cc7e.jpg"
+    "./images2/cat1.jpg",
+    "./images2/cat2.webp",
+    "./images2/cat3.jpg",
+    "./images2/cat4.jpg",
+    "./images2/cat5.png",
+    "./images2/cat6.jpg"
   ];
+  
   let currentIndex = 0;
+  let carouselInterval;
   
   function showImage(index) {
-    document.getElementById("carousel-image").src = images[index];
+    const img = document.getElementById("carousel-image");
+    img.src = images[index];
   }
   
   function nextImage() {
@@ -72,6 +78,20 @@ const quizQuestions = [
     currentIndex = (currentIndex - 1 + images.length) % images.length;
     showImage(currentIndex);
   }
+  
+  function startCarousel() {
+    carouselInterval = setInterval(() => {
+      nextImage();
+    }, 3000); // Change every 3 seconds
+  }
+  
+  window.onload = function () {
+    showImage(currentIndex); // Show first image
+    startCarousel();         // Start auto-rotation
+    loadQuestion();          // If using quiz logic
+  };
+  
+
   
   // ✅ Weather API using wttr.in (no API key needed)
   async function getWeather() {
