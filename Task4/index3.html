@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All-in-One Web App</title>
+  <link rel="stylesheet" href="style4.css" />
+  <script defer src="script4.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTTXrwOs1I6Q/8L2sYb3+xIb4CIf8RVa1+FAz4c+pT/JUcbpUkd9LzXAK8bw9TX6vPJGprDbiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#" onclick="showSection('about')"><i class="fas fa-user"></i> About</a></li>
+      <li><a href="#" onclick="showSection('projects')"><i class="fas fa-code"></i> Projects</a></li>
+      <li><a href="#" onclick="showSection('contact')"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Portfolio: About -->
+  <section id="about" class="visible fade-section">
+    <h2>About Me</h2>
+    <img src="../Task4/profile.webp" alt="Profile Image">
+    <p>Hello! I'm a passionate web developer skilled in building responsive, dynamic, and interactive websites. With a strong foundation in HTML, CSS, and JavaScript, I create user-friendly web applications. I'm continuously learning new technologies and love solving problems through code.</p>
+    <ul>
+      <li><strong>Name:</strong> John Doe</li>
+      <li><strong>Profession:</strong> Frontend Developer</li>
+      <li><strong>Skills:</strong> HTML, CSS, JavaScript, React, Node.js</li>
+      <li><strong>Hobbies:</strong> Coding, Blogging, Music</li>
+    </ul>
+  </section>
+
+  <!-- Portfolio: Projects -->
+  <section id="projects" class="hidden fade-section">
+    <h2>My Projects</h2>
+
+    <!-- Todo App -->
+    <div class="card">
+      <h3>📝 To-Do List</h3>
+      <input type="text" id="todo-input" placeholder="Add a task..." />
+      <button onclick="addTask()">Add</button>
+      <ul id="todo-list"></ul>
+    </div>
+
+    <!-- Product Filter App -->
+    <div class="card">
+      <h3>🛍️ Product Listing</h3>
+      <div class="filters">
+        <select id="category-filter" onchange="applyFilters()">
+          <option value="all">All</option>
+          <option value="electronics">Electronics</option>
+          <option value="books">Books</option>
+        </select>
+
+        <select id="sort-filter" onchange="applyFilters()">
+          <option value="default">Sort by</option>
+          <option value="price-asc">Price Low to High</option>
+          <option value="price-desc">Price High to Low</option>
+        </select>
+      </div>
+      <div id="product-list"></div>
+    </div>
+  </section>
+
+  <!-- Portfolio: Contact -->
+  <section id="contact" class="hidden fade-section">
+    <h2>Contact Me</h2>
+    <p>Feel free to reach out to me!</p>
+    <ul>
+      <li><strong>Email:</strong> johndoe@example.com</li>
+      <li><strong>Phone:</strong> +91-9876543210</li>
+      <li><strong>Location:</strong> India</li>
+    </ul>
+    <form>
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</body>
+</html>
