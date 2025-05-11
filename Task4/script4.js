@@ -24,7 +24,6 @@ function addTask() {
     const li = document.createElement('li');
     li.textContent = taskValue;
 
-    // Create Remove button
     const removeButton = document.createElement('button');
     removeButton.textContent = '❌';
     removeButton.classList.add('remove-btn');
@@ -32,20 +31,15 @@ function addTask() {
       removeTask(li);
     };
 
-    // Append the Remove button to the list item
     li.appendChild(removeButton);
     taskList.appendChild(li);
-
-    // Clear input after adding task
     taskInput.value = '';
   }
 }
 
-// Function to remove a task
 function removeTask(taskItem) {
   taskItem.remove();
 }
-
 
 function saveTasks() {
   const tasks = [];
@@ -55,22 +49,22 @@ function saveTasks() {
 
 // Product Listing and Filters
 const products = [
-  { name: "Smartphone", category: "electronics", price: 299 },
-  { name: "Laptop", category: "electronics", price: 799 },
-  { name: "Book: JS Basics", category: "books", price: 19 },
-  { name: "Book: CSS Mastery", category: "books", price: 25 },
-  { name: "The 3 mistakes of my life Novel", category: "books", price: 500 },
-  { name: "Cookbook", category: "books", price: 600 },
-  { name: "Dining Set", category: "crockery", price: 2500 },
-  { name: "Plates", category: "crockery", price: 900 },
-  { name: "Burger", category: "food", price: 150 },
-  { name: "Chocolates", category: "food", price: 200 },
-  { name: "Sofa", category: "furniture", price: 18000 },
-  { name: "Dining Table", category: "furniture", price: 22000 },
-  { name: "Harry Potter (pack of 7)", category: "books", price: 5600 },
-  { name: "twisted games", category: "books", price: 700 },
-  { name: "can we be strangers again", category: "books", price: 750 },
-  { name: "when there is nothing left but love novel", category: "books", price: 900 },
+  { name: "Smartphone", category: "electronics", price: 299, image: "./images4/apple.jpg" },
+  { name: "Laptop", category: "electronics", price: 799, image: "./images4/laptop.jpg" },
+  { name: "Book: JS Basics", category: "books", price: 19, image: "./images4/js_book.jpg" },
+  { name: "Book: CSS Mastery", category: "books", price: 25, image: "./images4/css_book.jpg" },
+  { name: "The 3 mistakes of my life Novel", category: "books", price: 500, image: "./images4/3mistakes.jpeg" },
+  { name: "Cookbook", category: "books", price: 600, image: "./images4/cookbook3.jpg" },
+  { name: "Dining Set", category: "crockery", price: 2500, image: "./images4/dining_set.webp" },
+  { name: "Plates", category: "crockery", price: 900, image: "./images4/plates.webp" },
+  { name: "Burger", category: "food", price: 150, image: "./images4/burger.webp" },
+  { name: "Chocolates", category: "food", price: 200, image: "./images4/chocolate.webp" },
+  { name: "Sofa", category: "furniture", price: 18000, image: "./images4/sofa.webp" },
+  { name: "Dining Table", category: "furniture", price: 22000, image: "./images4/dining_table.avif" },
+  { name: "Harry Potter (pack of 8)", category: "books", price: 5600, image: "./images4/harrypotter.jpg" },
+  { name: "twisted games", category: "books", price: 700, image: "./images4/twisted_games.webp" },
+  { name: "can we be strangers again", category: "books", price: 750, image: "./images4/strangers.webp" },
+  { name: "when there is nothing left but love novel", category: "books", price: 900, image: "./images4/nothing_left.jpg" },
 ];
 
 function displayProducts(filtered = products) {
@@ -90,13 +84,25 @@ function displayProducts(filtered = products) {
     div.className = "product";
     div.setAttribute("data-category", product.category);
 
+    // Add icon
     const icon = document.createElement("i");
     icon.className = `fas ${iconMap[product.category] || "fa-box"} product-icon`;
-
     div.appendChild(icon);
-    div.innerHTML += `<strong>${product.name}</strong><br>
+
+    // Add image
+    const img = document.createElement("img");
+    img.src = product.image;
+    img.alt = product.name;
+    img.className = "product-image";
+    div.appendChild(img);
+
+    // Add text details
+    const info = document.createElement("div");
+    info.innerHTML = `<strong>${product.name}</strong><br>
                       Category: ${product.category}<br>
                       Price: $${product.price}`;
+    div.appendChild(info);
+
     list.appendChild(div);
   });
 }

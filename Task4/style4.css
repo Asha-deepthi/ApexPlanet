@@ -200,6 +200,12 @@ button:hover {
   color: #007bff;
 }
 
+.product-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
 
 /* Contact Section */
 form {
