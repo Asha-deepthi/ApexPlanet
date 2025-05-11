@@ -16,20 +16,36 @@ function loadTasks() {
   tasks.forEach(task => addTask(task));
 }
 
-function addTask(taskText = null) {
-  const value = taskText || todoInput.value.trim();
-  if (value === "") return;
+function addTask() {
+  const taskInput = document.getElementById('todo-input');
+  const taskValue = taskInput.value.trim();
+  if (taskValue) {
+    const taskList = document.getElementById('todo-list');
+    const li = document.createElement('li');
+    li.textContent = taskValue;
 
-  const li = document.createElement("li");
-  li.textContent = value;
-  li.onclick = () => {
-    li.remove();
-    saveTasks();
-  };
-  todoList.appendChild(li);
-  todoInput.value = "";
-  saveTasks();
+    // Create Remove button
+    const removeButton = document.createElement('button');
+    removeButton.textContent = '❌';
+    removeButton.classList.add('remove-btn');
+    removeButton.onclick = function() {
+      removeTask(li);
+    };
+
+    // Append the Remove button to the list item
+    li.appendChild(removeButton);
+    taskList.appendChild(li);
+
+    // Clear input after adding task
+    taskInput.value = '';
+  }
 }
+
+// Function to remove a task
+function removeTask(taskItem) {
+  taskItem.remove();
+}
+
 
 function saveTasks() {
   const tasks = [];
@@ -42,16 +58,45 @@ const products = [
   { name: "Smartphone", category: "electronics", price: 299 },
   { name: "Laptop", category: "electronics", price: 799 },
   { name: "Book: JS Basics", category: "books", price: 19 },
-  { name: "Book: CSS Mastery", category: "books", price: 25 }
+  { name: "Book: CSS Mastery", category: "books", price: 25 },
+  { name: "The 3 mistakes of my life Novel", category: "books", price: 500 },
+  { name: "Cookbook", category: "books", price: 600 },
+  { name: "Dining Set", category: "crockery", price: 2500 },
+  { name: "Plates", category: "crockery", price: 900 },
+  { name: "Burger", category: "food", price: 150 },
+  { name: "Chocolates", category: "food", price: 200 },
+  { name: "Sofa", category: "furniture", price: 18000 },
+  { name: "Dining Table", category: "furniture", price: 22000 },
+  { name: "Harry Potter (pack of 7)", category: "books", price: 5600 },
+  { name: "twisted games", category: "books", price: 700 },
+  { name: "can we be strangers again", category: "books", price: 750 },
+  { name: "when there is nothing left but love novel", category: "books", price: 900 },
 ];
 
 function displayProducts(filtered = products) {
   const list = document.getElementById("product-list");
   list.innerHTML = "";
-  filtered.forEach(p => {
+
+  const iconMap = {
+    electronics: "fa-laptop",
+    books: "fa-book",
+    food: "fa-apple-alt",
+    furniture: "fa-couch",
+    crockery: "fa-mug-hot",
+  };
+
+  filtered.forEach(product => {
     const div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = `<strong>${p.name}</strong><br>Category: ${p.category}<br>Price: $${p.price}`;
+    div.className = "product";
+    div.setAttribute("data-category", product.category);
+
+    const icon = document.createElement("i");
+    icon.className = `fas ${iconMap[product.category] || "fa-box"} product-icon`;
+
+    div.appendChild(icon);
+    div.innerHTML += `<strong>${product.name}</strong><br>
+                      Category: ${product.category}<br>
+                      Price: $${product.price}`;
     list.appendChild(div);
   });
 }
@@ -59,22 +104,18 @@ function displayProducts(filtered = products) {
 function applyFilters() {
   const category = document.getElementById("category-filter").value;
   const sort = document.getElementById("sort-filter").value;
-  let filtered = [...products];
 
+  let filtered = [...products];
   if (category !== "all") {
     filtered = filtered.filter(p => p.category === category);
   }
 
-  if (sort === "price-asc") {
-    filtered.sort((a, b) => a.price - b.price);
-  } else if (sort === "price-desc") {
-    filtered.sort((a, b) => b.price - a.price);
-  }
+  if (sort === "price-asc") filtered.sort((a, b) => a.price - b.price);
+  else if (sort === "price-desc") filtered.sort((a, b) => b.price - a.price);
 
   displayProducts(filtered);
 }
 
-// On Load
 window.onload = () => {
   loadTasks();
   displayProducts();
