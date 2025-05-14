@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products - APEXPLANET</title>
+  <link rel="stylesheet" href="styles5.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">APEXMART</div>
+      <ul class="nav-links">
+        <li><a href="index4.html">Home</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="product-section">
+      <h2>Explore Our Products</h2>
+
+      <div class="filters">
+        <select id="category-filter">
+          <option value="all">All Categories</option>
+          <option value="electronics">Electronics</option>
+          <option value="books">Books</option>
+          <option value="crockery">Crockery</option>
+          <option value="food">Food</option>
+          <option value="furniture">Furniture</option>
+          <option value="clothing">Clothing</option>
+          <option value="toys">Toys</option>
+          <option value="beauty">Beauty</option>
+        </select>
+
+        <select id="sort-filter">
+          <option value="">Sort By</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </div>
+
+      <div class="product-list" id="product-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 APEXPLANET. All rights reserved.</p>
+  </footer>
+
+  <script src="script5.js"></script>
+</body>
+</html>
